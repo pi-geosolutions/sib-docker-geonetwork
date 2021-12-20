@@ -13,6 +13,7 @@ COPY --chown=jetty:jetty ./log4jfix/* ${JETTY_BASE}/webapps/geonetwork/WEB-INF/l
 RUN rm ${JETTY_BASE}/webapps/geonetwork/WEB-INF/lib/log4j-*-2.7.jar
 
 COPY --chown=jetty:jetty ./custom-conf/config-security/* ${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/
+COPY --chown=jetty:jetty ./custom-conf/less/* ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/
 COPY --chown=jetty:jetty ./sib-entrypoint.sh /sib-entrypoint.sh
 RUN chmod +x /sib-entrypoint.sh
 ENTRYPOINT ["/sib-entrypoint.sh"]

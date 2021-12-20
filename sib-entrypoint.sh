@@ -34,5 +34,8 @@ ui_configuration='{"langDetector":{"fromHtmlTag":false,"regexp":"^(?:/.+)?/.+/([
 echo "INSERT INTO settings_ui (\"id\", \"configuration\") VALUES ('srv', '${ui_configuration}');" >> ${JETTY_BASE}/webapps/geonetwork/WEB-INF/classes/setup/sql/data/custom-data-db-default.sql
 
 
+# Customize the styles
+printf '\n@import "gn_navbar_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_navbar_default.less
+
 # Chain and run geonetwork entrypoint
 exec /geonetwork-entrypoint.sh "$@"
