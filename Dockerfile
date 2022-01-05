@@ -12,8 +12,14 @@ ENV GEONETWORK_URL="http://localhost/geonetwork"
 COPY --chown=jetty:jetty ./log4jfix/* ${JETTY_BASE}/webapps/geonetwork/WEB-INF/lib/
 RUN rm ${JETTY_BASE}/webapps/geonetwork/WEB-INF/lib/log4j-*-2.7.jar
 
-COPY --chown=jetty:jetty ./custom-conf/config-security/* ${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/
-COPY --chown=jetty:jetty ./custom-conf/less/* ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/
+COPY --chown=jetty:jetty ./custom-conf/ /custom-conf/
+# COPY --chown=jetty:jetty ./custom-conf/config-security/* ${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/
+# COPY --chown=jetty:jetty ./custom-conf/less/* ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/
+#RUN cp /custom-conf/config-security/* ${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/ && \
+#  cp /custom-conf/less/* ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/ && \
+#  cp -pr ${JETTY_BASE}/webapps/geonetwork/catalog/views/default ${JETTY_BASE}/webapps/geonetwork/catalog/views/sib && \
+#  cat /custom-conf/html/header-web-component-snippet.html ${JETTY_BASE}/webapps/geonetwork/catalog/views/sib/templates/index.html | tee ${JETTY_BASE}/webapps/geonetwork/catalog/views/sib/templates/index.html
+
 COPY --chown=jetty:jetty ./sib-entrypoint.sh /sib-entrypoint.sh
 RUN chmod +x /sib-entrypoint.sh
 ENTRYPOINT ["/sib-entrypoint.sh"]
