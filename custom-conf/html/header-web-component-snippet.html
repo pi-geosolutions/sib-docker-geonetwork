@@ -66,12 +66,26 @@
         .then(html => {
           const shadow = this.attachShadow({ mode: 'open'});
           shadow.innerHTML = html;
+
+          // Add custom style (see above)
           shadow.appendChild(style);
+
+          // Hide main content and footer (keep only header)
+          const mainContent = this.shadowRoot.querySelector("main");
+          if (typeof mainContent !== 'undefined') {
+            mainContent.parentNode.removeChild(mainContent);
+          }
+          const footerContent = this.shadowRoot.querySelector("footer");
+          if (typeof footerContent !== 'undefined') {
+            footerContent.parentNode.removeChild(footerContent);
+          }
+
+          // Add menu interactions (javascript from imported DOM doesn't seem to respond)
           const menuButton = this.shadowRoot.querySelector(".menu--btn");
           const menuButtonIcon = this.shadowRoot.querySelector(".menu--btn button");
           const menuDiv = this.shadowRoot.querySelector("#menu--header");
           menuButton.addEventListener('click', function(e) {
-            console.log('clicked button');
+            // console.log('clicked button');
             if (menuDiv.style.display !== "block") {
               menuDiv.style.display = "block";
               menuButtonIcon.setAttribute("aria-expanded", "true");
