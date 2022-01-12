@@ -26,7 +26,7 @@
     }
     `;
 
-  class EmbeddedWebview extends HTMLElement {
+  class WCEmbeddedHeader extends HTMLElement {
     connectedCallback() {
       fetch(this.getAttribute('src'))
         .then(response => response.text())
@@ -71,7 +71,59 @@
     }
   }
 
-  window.customElements.define(
-    'sib-header',
-    EmbeddedWebview
-  );
+window.customElements.define(
+  'sib-header',
+  WCEmbeddedHeader
+);
+
+let sib_footer_style = document.createElement('style');
+sib_footer_style.textContent = `
+    .region--footer-top::before {
+      position: unset !important;
+    }
+    .region--footer-top {
+      margin: 0;
+    }
+    .region--footer-top .gn-credits {
+      background-color: #2e8e47;
+      padding: 10px 0 0 20px;
+      font-style: italic;
+      color: white;
+    }
+    .region--footer-bottom {
+      position: relative;
+    }
+    `;
+
+class WCEmbeddedFooter extends HTMLElement {
+  connectedCallback() {
+    fetch(this.getAttribute('src'))
+      .then(response => response.text())
+      .then(html => {
+        const shadow = this.attachShadow({ mode: 'open'});
+        shadow.innerHTML = html;
+
+        // Add custom style (see above)
+        shadow.appendChild(sib_footer_style);
+
+        // Hide main content and footer (keep only header)
+        const mainContent = this.shadowRoot.querySelector("main");
+        if (typeof mainContent !== 'undefined') {
+          mainContent.parentNode.removeChild(mainContent);
+        }
+        const headerContent = this.shadowRoot.querySelector("header");
+        if (typeof headerContent !== 'undefined') {
+          headerContent.parentNode.removeChild(headerContent);
+        }
+        const footerTopContent = this.shadowRoot.querySelector(".region--footer-top");
+        if (typeof footerTopContent !== 'undefined') {
+          footerTopContent.innerHTML='<div class="gn-credits">Propulsé par GeoNetwork 4</div>';
+        }
+      });
+  }
+}
+
+window.customElements.define(
+  'sib-footer',
+  WCEmbeddedFooter
+);

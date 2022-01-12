@@ -1,4 +1,3 @@
-<sib-header src="SET_NATUREFRANCE_MENU_URL_HERE"></sib-header>
 <style>
   @font-face {
     font-family:"Montserrat";
@@ -37,4 +36,15 @@
     url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.ttf) format("truetype"),
     url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.svg#fontawesome) format("svg")
   }
+
+  .gn-full {
+    min-height: calc(100vh - 260px);
+  }
+
+  /* Main container in admin pages */
+  sib-header + div,
+  .navbar.gn-top-bar + .container-fluid  {
+    min-height: calc(100vh - 320px);
+  }
 </style>
+<sib-header src="SET_NATUREFRANCE_MENU_URL_HERE"></sib-header>

@@ -12,11 +12,13 @@ html {
 @btn-default-bg: #2e8e47;
 @btn-default-color: #fff;
 .btn-primary,
-.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg {
-  background-color: @btn-default-bg;
+.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg,
+.gn-row-main .gn-form-any .btn {
+  background-color: @btn-default-bg !important;
 }
 .btn-primary:hover,
-.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg:hover {
+.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg:hover,
+.gn-row-main .gn-form-any .btn:hover {
   background-color: lighten(@btn-default-bg, 10%);
 }
 .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
@@ -27,12 +29,16 @@ html {
 [data-ng-search-form] .gn-top-search .gn-form-any .btn-advanced.active {
   background-color: lighten(@btn-default-bg, 10%);
 }
-.navbar + .gn-alerts + sib-header {
+.navbar + .gn-alerts + style + sib-header {
   position: relative;
   top: 50px;
 }
-[ng-app="gn_editor"] .gn-top-bar {
-  z-index:2000;
+.gn-top-bar {
+  z-index:2000 !important;
+  background-color: @btn-default-bg !important;
+}
+[ng-app="gn_admin"] .gn-top-bar .navbar-collapse {
+  background-color: unset !important;
 }
 
 [ng-app="gn_editor"] .gn-editor-board {
@@ -40,4 +46,8 @@ html {
 }
 [gn-main-viewer] .tools button, .gn-main-viewer .tools button, [gn-main-viewer] .tools [role="button"], .gn-main-viewer .tools [role="button"] {
   background-color: @btn-default-bg;
+}
+
+footer.gn-bottom-bar {
+  display: none;
 }
