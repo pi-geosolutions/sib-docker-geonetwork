@@ -2,3 +2,42 @@
 html {
   font-size:unset;
 }
+
+// overwrite default colors
+@navbar-default-link-color: #fff;
+@navbar-default-color: #2e8e47;
+@gn-menubar-background: #2e8e47;
+@gn-menubar-background-hover: lighten(#2e8e47, 10%);
+@gn-menubar-background-active: lighten(#2e8e47, 10%);
+@btn-default-bg: #2e8e47;
+@btn-default-color: #fff;
+.btn-primary,
+.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg {
+  background-color: @btn-default-bg;
+}
+.btn-primary:hover,
+.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg:hover {
+  background-color: lighten(@btn-default-bg, 10%);
+}
+.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
+  background-color: darken(@btn-default-bg, 10%);
+}
+[data-ng-search-form] .gn-top-search .gn-form-any .btn-advanced.active {
+  background-color: lighten(@btn-default-bg, 10%);
+}
+.navbar + .gn-alerts + sib-header {
+  position: relative;
+  top: 50px;
+}
+[ng-app="gn_editor"] .gn-top-bar {
+  z-index:2000;
+}
+
+[ng-app="gn_editor"] .gn-editor-board {
+  padding-top: calc(50px + 1px);
+}
+[gn-main-viewer] .tools button, .gn-main-viewer .tools button, [gn-main-viewer] .tools [role="button"], .gn-main-viewer .tools [role="button"] {
+  background-color: @btn-default-bg;
+}
