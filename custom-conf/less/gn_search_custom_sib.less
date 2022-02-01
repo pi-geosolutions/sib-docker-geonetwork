@@ -10,7 +10,10 @@ html {
 @gn-menubar-background-hover: lighten(#2e8e47, 10%);
 @gn-menubar-background-active: lighten(#2e8e47, 10%);
 @btn-default-bg: #2e8e47;
+@brand-primary: #2e8e47;
 @btn-default-color: #fff;
+@navbar-default-link-active-bg: lighten(#2e8e47, 10%);
+@navbar-default-link-hover-bg: lighten(#2e8e47, 10%);
 .btn-primary,
 .gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg,
 .gn-row-main .gn-form-any .btn {
@@ -29,25 +32,40 @@ html {
 [data-ng-search-form] .gn-top-search .gn-form-any .btn-advanced.active {
   background-color: lighten(@btn-default-bg, 10%);
 }
-.navbar + .gn-alerts + style + sib-header {
-  position: relative;
-  top: 50px;
-}
+// [ng-app="gn_admin"]  .gn-alerts + style + sib-header  {
+//   position: relative;
+// }
+// [ng-app="gn_editor"]  .gn-alerts + style + sib-header {
+//   position: relative;
+//   top: 50px;
+// }
 .gn-top-bar {
-  z-index:2000 !important;
+  // z-index:2000 !important;
   background-color: @btn-default-bg !important;
 }
-[ng-app="gn_admin"] .gn-top-bar .navbar-collapse {
-  background-color: unset !important;
-}
-
-[ng-app="gn_editor"] .gn-editor-board {
-  padding-top: calc(50px + 1px);
-}
+//
+// [ng-app="gn_editor"] .gn-editor-board {
+//   padding-top: calc(50px + 1px);
+// }
 [gn-main-viewer] .tools button, .gn-main-viewer .tools button, [gn-main-viewer] .tools [role="button"], .gn-main-viewer .tools [role="button"] {
   background-color: @btn-default-bg;
 }
 
 footer.gn-bottom-bar {
   display: none;
+}
+
+[ng-app="gn_admin"] .gn-top-bar {
+  .navbar-collapse {
+    background-color: unset !important;
+  }
+  .dropdown-menu {
+    > li {
+      &.active, &:hover {
+        > a {
+          color: black !important;
+        }
+      }
+    }
+  }
 }

@@ -31,6 +31,9 @@
       fetch(this.getAttribute('src'))
         .then(response => response.text())
         .then(html => {
+          // replace all relative references (href, src)
+          html = html.replaceAll('="/','="https://naturefrance.fr/')
+
           const shadow = this.attachShadow({ mode: 'open'});
           shadow.innerHTML = html;
 
@@ -100,6 +103,9 @@ class WCEmbeddedFooter extends HTMLElement {
     fetch(this.getAttribute('src'))
       .then(response => response.text())
       .then(html => {
+        // replace all relative references (href, src)
+        html = html.replaceAll('="/','="https://naturefrance.fr/')
+
         const shadow = this.attachShadow({ mode: 'open'});
         shadow.innerHTML = html;
 

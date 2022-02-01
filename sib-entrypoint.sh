@@ -54,12 +54,14 @@ else
   # Configure then add webcomponent menu snippet in xslt/base-layout.xsl (global layout)
   if [[ -n $NF_MENU_URL ]]; then
     echo "Adding NatureFrance.fr's menu and footer using WebComponents"
+
+    cp /custom-conf/base-layout.xsl ${JETTY_BASE}/webapps/geonetwork/xslt/
     #cat /custom-conf/html/header-web-component-snippet.html ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/templates/index.html | tee ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/templates/index.html
-    sed -i '/<div data-gn-alert-manager=""><\/div>/ r /custom-conf/html/header-web-component-snippet.html' ${JETTY_BASE}/webapps/geonetwork/xslt/base-layout.xsl
+    # sed -i '/<div data-gn-alert-manager=""><\/div>/ r /custom-conf/html/header-web-component-snippet.html' ${JETTY_BASE}/webapps/geonetwork/xslt/base-layout.xsl
     # sed -i '/<xsl:apply-templates mode="content" select="."\/>/ r /custom-conf/html/footer-web-component-snippet.html' ${JETTY_BASE}/webapps/geonetwork/xslt/base-layout.xsl
-    # Insert the footer markup only after 2nd occurrence of the `<xsl:apply-templates mode="content" select="."/>`
-    awk 'BEGIN {t=0}; { print }; /<xsl:apply-templates mode="content" select="."\/>/ {t++; if ( t==2 ) { print "\n            <sib-footer src=\"SET_NATUREFRANCE_MENU_URL_HERE\"></sib-footer>" } }' ${JETTY_BASE}/webapps/geonetwork/xslt/base-layout.xsl > /tmp/base-layout.xsl \
-       && mv /tmp/base-layout.xsl ${JETTY_BASE}/webapps/geonetwork/xslt/base-layout.xsl
+    # Insert the footer markup only after 2nd occurrence of the `<xsl:apply-templates mode="content" select="."/>` Make it appear only on public pages
+    # awk 'BEGIN {t=0}; { print };/<xsl:apply-templates mode="content" select="."\/>/ {t++; if ( t==2 ) { print "\n            <xsl:if test=\"$angularApp = \047gn_search\047 or $angularApp = \047gn_viewer\047 or $angularApp = \047gn_formatter_viewer\047\">\n              <sib-footer src=\"SET_NATUREFRANCE_MENU_URL_HERE\"></sib-footer>\n            </xsl:if>" } }' ${JETTY_BASE}/webapps/geonetwork/xslt/base-layout.xsl > /tmp/base-layout.xsl \
+    #    && mv /tmp/base-layout.xsl ${JETTY_BASE}/webapps/geonetwork/xslt/base-layout.xsl
     sed -i "s|SET_NATUREFRANCE_MENU_URL_HERE|$NF_MENU_URL|g" ${JETTY_BASE}/webapps/geonetwork/xslt/base-layout.xsl
     cp /custom-conf/js/header-web-component-snippet.js ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/
     # Tell wro4j not to try to compile our code snippet (which uses es6, while wro4j sticks with es5 javascript, so it wouldn't compile)
