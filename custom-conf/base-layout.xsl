@@ -88,72 +88,74 @@
               <div class="navbar navbar-default gn-top-bar"
                    role="navigation"
                    data-ng-hide="layout.hideTopToolBar"
-                   data-ng-include="'{$uiResourcesPath}templates/top-toolbar.html'"></div>
+                   data-ng-include="isMenubarAccessible ? '{$uiResourcesPath}templates/top-toolbar-accessible.html' : '{$uiResourcesPath}templates/top-toolbar.html'"></div>
             </xsl:if>
 
 
+            <div data-gn-alert-manager=""></div>
             <xsl:if test="$angularApp = 'gn_search' or $angularApp = 'gn_viewer' or $angularApp = 'gn_formatter_viewer'">
-              <style>
-                @font-face {
-                  font-family:"Montserrat";
-                  font-style:normal;
-                  font-weight:700;
-                  src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/./../fonts/Montserrat-Bold.ttf) format("truetype")
-                }
-                @font-face {
-                  font-family:"Montserrat";
-                  font-style:normal;
-                  font-weight:400;
-                  src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/./../fonts/Montserrat-Regular.ttf) format("truetype")
-                }
+            <style>
+              @font-face {
+              font-family:"Montserrat";
+              font-style:normal;
+              font-weight:700;
+              src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/./../fonts/Montserrat-Bold.ttf) format("truetype")
+              }
+              @font-face {
+              font-family:"Montserrat";
+              font-style:normal;
+              font-weight:400;
+              src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/./../fonts/Montserrat-Regular.ttf) format("truetype")
+              }
 
-                @font-face {
-                  font-family:'Font Awesome 5 Brands';
-                  font-style:normal;
-                  font-weight:400;
-                  font-display:block;
-                  src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.eot);
-                  src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),
-                  url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.woff2) format("woff2"),
-                  url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.woff) format("woff"),
-                  url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.ttf) format("truetype"),
-                  url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.svg#fontawesome) format("svg")
-                }
-                @font-face {
-                  font-family:'Font Awesome 5 Free';
-                  font-style:normal;
-                  font-weight:900;
-                  font-display:block;
-                  src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.eot);
-                  src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),
-                  url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.woff2) format("woff2"),
-                  url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.woff) format("woff"),
-                  url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.ttf) format("truetype"),
-                  url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.svg#fontawesome) format("svg")
-                }
+              @font-face {
+              font-family:'Font Awesome 5 Brands';
+              font-style:normal;
+              font-weight:400;
+              font-display:block;
+              src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.eot);
+              src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),
+              url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.woff2) format("woff2"),
+              url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.woff) format("woff"),
+              url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.ttf) format("truetype"),
+              url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-brands-400.svg#fontawesome) format("svg")
+              }
+              @font-face {
+              font-family:'Font Awesome 5 Free';
+              font-style:normal;
+              font-weight:900;
+              font-display:block;
+              src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.eot);
+              src:url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),
+              url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.woff2) format("woff2"),
+              url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.woff) format("woff"),
+              url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.ttf) format("truetype"),
+              url(https://naturefrance.fr/themes/ofb/ofb_ui/dist/css/../webfonts/fa-solid-900.svg#fontawesome) format("svg")
+              }
 
-                .gn-full {
-                  min-height: calc(100vh - 260px);
-                }
-
-                /* Main container in admin pages */
-                sib-header + div,
-                .navbar.gn-top-bar + .container-fluid  {
-                  min-height: calc(100vh - 320px);
-                }
-              </style>
-              <sib-header src="SET_NATUREFRANCE_MENU_URL_HERE"></sib-header>
+              .gn-full {
+                min-height: calc(100vh - 260px);
+              }
+              /* Main container in admin pages */
+              sib-header + div,
+              .navbar.gn-top-bar + .container-fluid {
+                min-height: calc(100vh - 320px);
+              }
+            </style>
+            <sib-header src="http://localhost/blankPage.html"></sib-header>
             </xsl:if>
+
 
             <xsl:apply-templates mode="content" select="."/>
 
             <xsl:if test="$angularApp = 'gn_search' or $angularApp = 'gn_viewer' or $angularApp = 'gn_formatter_viewer'">
-              <sib-footer src="SET_NATUREFRANCE_MENU_URL_HERE"></sib-footer>
+              <sib-footer src="http://localhost/blankPage.html"></sib-footer>
             </xsl:if>
 
             <xsl:if test="$isJsEnabled">
               <xsl:call-template name="javascript-load"/>
             </xsl:if>
+
           </xsl:otherwise>
         </xsl:choose>
       </body>
