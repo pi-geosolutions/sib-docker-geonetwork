@@ -3,7 +3,7 @@ IMAGE=pigeosolutions/sib-geonetwork
 SIBIMAGE=outils-patrinat.mnhn.fr/sib-geonetwork
 REV=`git rev-parse --short HEAD`
 DATE=`date +%Y%m%d-%H%M`
-VERSION=4.0.5
+VERSION=4.0.6
 
 all: docker-build docker-push
 
@@ -16,7 +16,7 @@ docker-build:
 	echo tagged ${IMAGE}:${VERSION}-${DATE}-${REV}
 
 docker-build-local:
-	docker build -f Dockerfile -t ${IMAGE}:latest . ;\
+	docker build -f Dockerfile-from-war -t ${IMAGE}:latest . ;\
 	docker tag  ${IMAGE}:latest ${IMAGE}:${VERSION}-${DATE}-${REV} ;\
 	echo tagged ${IMAGE}:${VERSION}-${DATE}-${REV}
 

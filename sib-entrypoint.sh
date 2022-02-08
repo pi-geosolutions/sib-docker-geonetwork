@@ -13,6 +13,8 @@ else
 
   if [[ "$ENABLE_CAS" == "yes" ]]; then
     echo "Enabling CAS: $ENABLE_CAS"
+    # Fix the login button in the top toolbar
+    cp /custom-conf/html/top-toolbar-accessible.html ${JETTY_BASE}/webapps/geonetwork/catalog/templates/
 
     # Enable CAS
     sed -i 's|<!--<import resource="config-security-cas.xml"/>-->|<import resource="config-security-cas.xml"/>|' ${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.xml
