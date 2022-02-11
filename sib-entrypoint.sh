@@ -46,12 +46,20 @@ else
 
   fi
 
+  if [[ "$ENABLE_FLAT_FORM" == "yes" ]]; then
+    echo "Configuring flat form (ISO 19139 metadata edition)."
+    # Add the flat form config
+    cp -r /custom-conf/flat-form/* ${JETTY_BASE}/webapps/geonetwork/WEB-INF/data/config/schema_plugins/iso19139/
+    # Use the less styles specific to flat form
+    printf '\n@import "gn_editor_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_editor_default.less
+  fi
 
   # Customize the styles
   echo "Customizing styles (less files)"
   cp /custom-conf/less/* ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/
   printf '\n@import "gn_navbar_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_navbar_default.less
   printf '\n@import "gn_search_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_search_default.less
+  printf '\n@import "gn_editor_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_editor_default.less
 
   # Configure then add webcomponent menu snippet in xslt/base-layout.xsl (global layout)
   if [[ -n $NF_MENU_URL ]]; then
