@@ -25,9 +25,9 @@ docker-push:
 	docker tag  ${IMAGE}:latest ${IMAGE}:${VERSION}-${DATE}-${REV} ;\
 	docker push ${IMAGE}:${VERSION}-${DATE}-${REV}
 
-docker-tag-sib:
-	docker tag  ${IMAGE}:latest ${SIBIMAGE}:latest ;\
-	docker tag  ${IMAGE}:latest ${SIBIMAGE}:${VERSION}-${DATE}-${REV} ;\
+docker-build-sib:
+	docker build -t ${SIBIMAGE}:latest . ;\
+	docker tag  ${SIBIMAGE}:latest ${SIBIMAGE}:${VERSION}-${DATE}-${REV} ;\
 	echo tagged ${SIBIMAGE}:${VERSION}-${DATE}-${REV}
 
 docker-push-sib: docker-tag-sib
