@@ -7,6 +7,11 @@ MAINTAINER Jean Pommier "jp@pi-geosolutions.fr"
 # More about SIB: https://naturefrance.fr/systeme-information-biodiversite
 
 ENV GEONETWORK_URL="http://localhost/geonetwork"
+ENV ENABLE_CAS=no
+    CAS_BASE_URL=
+    ADMIN_USERS=
+    ENABLE_FLAT_FORM=no
+    NF_MENU_URL=
 
 COPY --chown=jetty:jetty ./custom-conf/ /custom-conf/
 

@@ -21,10 +21,10 @@ else
     sed -i 's|<!-- <import resource="config-security-cas-database.xml"/> -->|<import resource="config-security-cas-database.xml"/>|' ${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.xml
 
     # Configure CAS
-    sed -i "s|cas.baseURL=.*|cas.baseURL=https://test-cas-patrinat.mnhn.fr/auth|" "${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.properties"
-    sed -i "s|cas.ticket.validator.url=.*|cas.ticket.validator.url=https://test-cas-patrinat.mnhn.fr/auth|" "${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.properties"
-    sed -i "s|cas.login.url=.*|cas.login.url=https://test-cas-patrinat.mnhn.fr/auth/login|" "${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.properties"
-    sed -i "s|cas.logout.url=.*|cas.logout.url=https://test-cas-patrinat.mnhn.fr/auth/logout?service=\${geonetwork.https.url}/|" "${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.properties"
+    sed -i "s|cas.baseURL=.*|cas.baseURL=${CAS_BASE_URL}|" "${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.properties"
+    sed -i "s|cas.ticket.validator.url=.*|cas.ticket.validator.url=${CAS_BASE_URL}|" "${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.properties"
+    sed -i "s|cas.login.url=.*|cas.login.url=${CAS_BASE_URL}/login|" "${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.properties"
+    sed -i "s|cas.logout.url=.*|cas.logout.url=${CAS_BASE_URL}/logout?service=\${geonetwork.https.url}/|" "${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.properties"
     sed -i "s|geonetwork.https.url=.*|geonetwork.https.url=${GEONETWORK_URL}|" "${JETTY_BASE}/webapps/geonetwork/WEB-INF/config-security/config-security.properties"
 
     # Configure the signin page to use casLogin param (could also be done using admin GUI->create new UI)
