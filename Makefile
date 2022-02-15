@@ -7,6 +7,8 @@ VERSION=4.0.6
 
 all: docker-build docker-push
 
+sib: docker-push-sib
+
 pull-deps:
 	docker pull geonetwork:${VERSION}
 
@@ -30,7 +32,7 @@ docker-build-sib:
 	docker tag  ${SIBIMAGE}:latest ${SIBIMAGE}:${VERSION}-${DATE}-${REV} ;\
 	echo tagged ${SIBIMAGE}:${VERSION}-${DATE}-${REV}
 
-docker-push-sib: docker-tag-sib
+docker-push-sib: docker-build-sib
 	docker push ${SIBIMAGE}:latest ;\
 	docker tag  ${SIBIMAGE}:latest ${SIBIMAGE}:${VERSION}-${DATE}-${REV} ;\
 	docker push ${SIBIMAGE}:${VERSION}-${DATE}-${REV}
