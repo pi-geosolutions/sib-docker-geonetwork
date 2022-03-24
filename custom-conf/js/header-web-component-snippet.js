@@ -24,6 +24,104 @@
       width: 170px;
       height: 60px;
     }
+
+    a.menu-icon-135,
+    ul.links li.menu-icon-135 a,
+    ul.menu li.menu-icon-135 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/EtatEvolution_0.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-136,
+    ul.links li.menu-icon-136 a,
+    ul.menu li.menu-icon-136 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Pressions_Menaces.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-137,
+    ul.links li.menu-icon-137 a,
+    ul.menu li.menu-icon-137 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Connaissance.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-138,
+    ul.links li.menu-icon-138 a,
+    ul.menu li.menu-icon-138 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Politique.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-139,
+    ul.links li.menu-icon-139 a,
+    ul.menu li.menu-icon-139 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Societe.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-140,
+    ul.links li.menu-icon-140 a,
+    ul.menu li.menu-icon-140 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Economie_0.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-167,
+    ul.links li.menu-icon-167 a,
+    ul.menu li.menu-icon-167 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Forestiers.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-168,
+    ul.links li.menu-icon-168 a,
+    ul.menu li.menu-icon-168 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Aquatiques.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-170,
+    ul.links li.menu-icon-170 a,
+    ul.menu li.menu-icon-170 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Marins.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-171,
+    ul.links li.menu-icon-171 a,
+    ul.menu li.menu-icon-171 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Agricoles.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-172,
+    ul.links li.menu-icon-172 a,
+    ul.menu li.menu-icon-172 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Batis.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+    a.menu-icon-192,
+    ul.links li.menu-icon-192 a,
+    ul.menu li.menu-icon-192 a {
+        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Humides_0.svg);
+        padding-left:px;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+
     `;
 
   class WCEmbeddedHeader extends HTMLElement {
