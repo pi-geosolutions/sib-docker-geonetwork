@@ -1,13 +1,13 @@
 /*
- * Create a WebComponent to embed the meun from naturefrance.fr
+ * Create a WebComponent to embed the menu from naturefrance.fr
 */
 
 // ref https://sebastiandedeyne.com/embed-a-web-page-with-a-web-component-and-the-shadow-dom/
-  let style = document.createElement('style');
-  style.textContent = `
+let sib_style = document.createElement('style');
+sib_style.textContent = `
     header {
       z-index: 1000;
-      font-family: "Montserrat",sans-serif;
+      font-family: "Marianne",sans-serif;
       font-size: 14px;
       font-weight: 400;
       line-height: 1.5;
@@ -17,160 +17,110 @@
     #menu--header {
       display: none;
     }
-    .navbar-light .navbar-nav  #block-ofb-ui-search{
+    .navbar-brand .search-block-form{
       visibility: hidden;
     }
     #header .region--header-top .navbar-brand img {
-      width: 170px;
+      //width: 170px;
       height: 60px;
     }
+    .region--header {
+      z-index: 10000;
+    }
+    .region--header-top .menu--btn__burger[aria-expanded="true"] .burger__bar:first-child {
+      -webkit-transform: rotate(-45deg) translate(calc(-50% + 6px),-11px);
+      transform: rotate(-45deg) translate(calc(-50% + 6px),-11px);
+    }
+`;
 
-    a.menu-icon-135,
-    ul.links li.menu-icon-135 a,
-    ul.menu li.menu-icon-135 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/EtatEvolution_0.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-136,
-    ul.links li.menu-icon-136 a,
-    ul.menu li.menu-icon-136 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Pressions_Menaces.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-137,
-    ul.links li.menu-icon-137 a,
-    ul.menu li.menu-icon-137 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Connaissance.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-138,
-    ul.links li.menu-icon-138 a,
-    ul.menu li.menu-icon-138 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Politique.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-139,
-    ul.links li.menu-icon-139 a,
-    ul.menu li.menu-icon-139 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Societe.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-140,
-    ul.links li.menu-icon-140 a,
-    ul.menu li.menu-icon-140 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Economie_0.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-167,
-    ul.links li.menu-icon-167 a,
-    ul.menu li.menu-icon-167 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Forestiers.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-168,
-    ul.links li.menu-icon-168 a,
-    ul.menu li.menu-icon-168 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Aquatiques.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-170,
-    ul.links li.menu-icon-170 a,
-    ul.menu li.menu-icon-170 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Marins.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-171,
-    ul.links li.menu-icon-171 a,
-    ul.menu li.menu-icon-171 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Agricoles.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-172,
-    ul.links li.menu-icon-172 a,
-    ul.menu li.menu-icon-172 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Batis.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
-    a.menu-icon-192,
-    ul.links li.menu-icon-192 a,
-    ul.menu li.menu-icon-192 a {
-        background-image: url(https://naturefrance.fr/sites/default/files/menu_icons/Milieux_Humides_0.svg);
-        padding-left:px;
-        background-repeat: no-repeat;
-        background-position: left center;
-    }
+class WCEmbeddedHeader extends HTMLElement {
+  connectedCallback() {
+    fetch(this.getAttribute('src'))
+      .then(response => response.text())
+      .then(html => {
+        // replace all relative references (href, src)
+        html = html.replaceAll('="//','="https://')
+        html = html.replaceAll('="/','="https://naturefrance.fr/')
+        // console.log(html)
+        const shadow = this.attachShadow({ mode: 'open'});
+        shadow.innerHTML = html;
 
-    `;
+        // Add custom style (see above)
+        shadow.appendChild(sib_style);
 
-  class WCEmbeddedHeader extends HTMLElement {
-    connectedCallback() {
-      fetch(this.getAttribute('src'))
-        .then(response => response.text())
-        .then(html => {
-          // replace all relative references (href, src)
-          html = html.replaceAll('="/','="https://naturefrance.fr/')
+        // Hide main content and footer (keep only header)
+        const mainContent = this.shadowRoot.querySelector("main");
+        if (typeof mainContent !== 'undefined') {
+          mainContent.parentNode.removeChild(mainContent);
+        }
+        const footerContent = this.shadowRoot.querySelector("footer");
+        if (typeof footerContent !== 'undefined') {
+          footerContent.parentNode.removeChild(footerContent);
+        }
 
-          const shadow = this.attachShadow({ mode: 'open'});
-          shadow.innerHTML = html;
+        // Add menu interactions (javascript from imported DOM doesn't seem to respond)
+        const menuButton = this.shadowRoot.querySelector(".menu--btn");
+        const menuButtonBurger = this.shadowRoot.querySelector(".menu--btn__burger");
+        const menuDiv = this.shadowRoot.querySelector("#menu--header");
+        const menuBanner = this.shadowRoot.querySelector(".menu--banner");
 
-          // Add custom style (see above)
-          shadow.appendChild(style);
-
-          // Hide main content and footer (keep only header)
-          const mainContent = this.shadowRoot.querySelector("main");
-          if (typeof mainContent !== 'undefined') {
-            mainContent.parentNode.removeChild(mainContent);
+        menuButton.addEventListener('click', function(e) {
+          // console.log('clicked button');
+          if (menuButtonBurger.getAttribute("aria-expanded") == "true") {
+            menuButtonBurger.setAttribute("aria-expanded", "false")
+            menuDiv.classList.remove("show");
+            menuBanner.style.transform = "translateX(-100%)";
+          } else {
+            menuButtonBurger.setAttribute("aria-expanded", "true")
+            menuDiv.classList.add("show");
+            menuBanner.style.transform = "translateX(0)";
           }
-          const footerContent = this.shadowRoot.querySelector("footer");
-          if (typeof footerContent !== 'undefined') {
-            footerContent.parentNode.removeChild(footerContent);
-          }
-
-          // Add menu interactions (javascript from imported DOM doesn't seem to respond)
-          const menuButton = this.shadowRoot.querySelector(".menu--btn");
-          const menuButtonIcon = this.shadowRoot.querySelector(".menu--btn button");
-          const menuDiv = this.shadowRoot.querySelector("#menu--header");
-          menuButton.addEventListener('click', function(e) {
-            // console.log('clicked button');
-            if (menuDiv.style.display !== "block") {
-              menuDiv.style.display = "block";
-              menuButtonIcon.setAttribute("aria-expanded", "true");
-            } else {
-              menuDiv.style.display = "none";
-              menuButtonIcon.setAttribute("aria-expanded", "false");
-            }
-          });
-
-          // Open partners page upon clickig the "Sites" button on the right
-          const sitesButton = this.shadowRoot.querySelector("button.menu--nos-site");
-          sitesButton.addEventListener('click', function(e) {
-            window.open("https://naturefrance.fr/ressources-accessibles","_self");
-          });
         });
-    }
+        // Hide the menu when user clicks outside in the modal part
+        this.shadowRoot.querySelector(".menu--backdrop").addEventListener('click', function() {
+          menuButtonBurger.ariaExpanded = "false";
+          menuDiv.classList.remove("show");
+          menuBanner.style.transform = "translateX(-100%)";
+        });
+
+        let shadowRoot = this.shadowRoot
+        // dynamic behaviour of the menu sections
+        let menuButtons = this.shadowRoot.querySelectorAll("#accordion-menu nav button.btn-link");
+        // console.log("buttons");
+        // console.log(menuButtons);
+        menuButtons.forEach(function(item, index) {
+          item.addEventListener('click', function () {
+            // console.log("should open " + this.getAttribute('data-target'));
+            const target_menu_id = this.getAttribute('data-target');
+
+            // console.log("target menu block is " + target_menu_id);
+            let menus = shadowRoot.querySelectorAll('#accordion-menu nav div.collapse');
+            // console.log(menus);
+            menus.forEach(function (item, index) {
+              if (item.id != '#'+target_menu_id) {
+                // console.log("should toggle out menu " + item.id);
+                item.classList.remove("show");
+                // item.setAttribute("aria-expanded", "false")
+                // console.log("which now has classes " + item.classList);
+              }
+            });
+            let target_menu = this.parentNode.querySelector(target_menu_id);
+            target_menu.classList.add("show");
+            target_menu.setAttribute("aria-expanded", "true")
+          })
+        });
+
+
+
+        // Open partners page upon clicking the "Sites" button on the right
+        const sitesButton = this.shadowRoot.querySelector("button.menu--nos-site");
+        sitesButton.addEventListener('click', function(e) {
+          window.open("https://naturefrance.fr/ressources-accessibles","_self");
+        });
+      });
+
   }
+}
 
 window.customElements.define(
   'sib-header',
@@ -184,6 +134,7 @@ sib_footer_style.textContent = `
     }
     .region--footer-top {
       margin: 0;
+      padding:0;
     }
     .region--footer-top .gn-credits {
       background-color: #2e8e47;
@@ -202,8 +153,8 @@ class WCEmbeddedFooter extends HTMLElement {
       .then(response => response.text())
       .then(html => {
         // replace all relative references (href, src)
+        html = html.replaceAll('="//','="https://')
         html = html.replaceAll('="/','="https://naturefrance.fr/')
-
         const shadow = this.attachShadow({ mode: 'open'});
         shadow.innerHTML = html;
 
