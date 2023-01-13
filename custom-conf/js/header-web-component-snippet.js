@@ -25,7 +25,7 @@ sib_style.textContent = `
       height: 60px;
     }
     .region--header {
-      z-index: 10000;
+      z-index: 9998;
     }
     .region--header-top .menu--btn__burger[aria-expanded="true"] .burger__bar:first-child {
       -webkit-transform: rotate(-45deg) translate(calc(-50% + 6px),-11px);
