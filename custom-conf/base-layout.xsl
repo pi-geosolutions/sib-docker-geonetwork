@@ -151,6 +151,7 @@
 
               .gn-full {
                 min-height: calc(100vh - 260px);
+                top:120px;
               }
               /* Main container in admin pages */
               sib-header + div,
@@ -158,14 +159,14 @@
                 min-height: calc(100vh - 320px);
               }
             </style>
-            <sib-header src="http://localhost/blankPage.html"></sib-header>
+            <sib-header src="SET_NATUREFRANCE_MENU_URL_HERE"></sib-header>
             </xsl:if>
 
 
             <xsl:apply-templates mode="content" select="."/>
 
             <xsl:if test="$angularApp = 'gn_search' or $angularApp = 'gn_viewer' or $angularApp = 'gn_formatter_viewer'">
-              <sib-footer src="http://localhost/blankPage.html"></sib-footer>
+              <sib-footer src="SET_NATUREFRANCE_MENU_URL_HERE"></sib-footer>
             </xsl:if>
 
             <xsl:if test="$isJsEnabled">
