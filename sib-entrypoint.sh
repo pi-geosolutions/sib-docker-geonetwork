@@ -61,6 +61,11 @@ else
   printf '\n@import "gn_search_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_search_default.less
   printf '\n@import "gn_editor_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_editor_default.less
 
+
+  # Fix translations
+  cp /custom-conf/locales/* ${JETTY_BASE}/webapps/geonetwork/catalog/locales/
+
+
   # Configure then add webcomponent menu snippet in xslt/base-layout.xsl (global layout)
   if [[ -n $NF_MENU_URL ]]; then
     echo "Adding NatureFrance.fr's menu and footer using WebComponents"
