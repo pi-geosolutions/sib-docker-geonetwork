@@ -100,53 +100,53 @@
               font-family:"Marianne";
               font-style:normal;
               font-weight:100;
-              src:url(/fonts/Marianne-Thin.otf) format("opentype");
+              src:url(/static/fonts/Marianne-Thin.otf) format("opentype");
               }
               @font-face{
               font-family:"Marianne";
               font-style:normal;
               font-weight:300;
-              src:url(/fonts/Marianne-Light.otf) format("opentype");
+              src:url(/static/fonts/Marianne-Light.otf) format("opentype");
               }
               @font-face{
               font-family:"Marianne";
               font-style:normal;
               font-weight:400;
-              src:url(/fonts/Marianne-Regular.otf) format("opentype");
+              src:url(/static/fonts/Marianne-Regular.otf) format("opentype");
               }
               @font-face{
               font-family:"Marianne";
               font-style:normal;
               font-weight:500;
-              src:url(/fonts/Marianne-Medium.otf) format("opentype");
+              src:url(/static/fonts/Marianne-Medium.otf) format("opentype");
               }
               @font-face{
               font-family:"Marianne";
               font-style:normal;
               font-weight:700;
-              src:url(/fonts/Marianne-Bold.otf) format("opentype");
+              src:url(/static/fonts/Marianne-Bold.otf) format("opentype");
               }
               @font-face{
               font-family:"Marianne";
               font-style:normal;
               font-weight:900;
-              src:url(/fonts/Marianne-ExtraBold.otf) format("opentype");
+              src:url(/static/fonts/Marianne-ExtraBold.otf) format("opentype");
               }
               @font-face{
               font-family:'Font Awesome 5 Free';
               font-style:normal;
               font-weight:900;
               font-display:block;
-              src:url(/fonts/fa-solid-900.eot);
-              src:url(/fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(/fonts/fa-solid-900.woff2) format("woff2"),url(/fonts/fa-solid-900.woff) format("woff"),url(/fonts/fa-solid-900.ttf) format("truetype"),url(/images/fa-solid-900.svg#fontawesome) format("svg");
+              src:url(/static/fonts/fa-solid-900.eot);
+              src:url(/static/fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(/static/fonts/fa-solid-900.woff2) format("woff2"),url(/static/fonts/fa-solid-900.woff) format("woff"),url(/static/fonts/fa-solid-900.ttf) format("truetype"),url(/images/fa-solid-900.svg#fontawesome) format("svg");
               }
               @font-face{
               font-family:'Font Awesome 5 Brands';
               font-style:normal;
               font-weight:400;
               font-display:block;
-              src:url(/fonts/fa-brands-400.eot);
-              src:url(/fonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(/fonts/fa-brands-400.woff2) format("woff2"),url(/fonts/fa-brands-400.woff) format("woff"),url(/fonts/fa-brands-400.ttf) format("truetype"),url(/images/fa-brands-400.svg#fontawesome) format("svg");
+              src:url(/static/fonts/fa-brands-400.eot);
+              src:url(/static/fonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(/static/fonts/fa-brands-400.woff2) format("woff2"),url(/static/fonts/fa-brands-400.woff) format("woff"),url(/static/fonts/fa-brands-400.ttf) format("truetype"),url(/images/fa-brands-400.svg#fontawesome) format("svg");
               }
 
               .gn-full {
