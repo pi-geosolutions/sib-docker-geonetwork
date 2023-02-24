@@ -250,7 +250,7 @@
       <div class="col-sm-10 no-bg"></div>
     </div>
   </g2f-bg>
-  <g2f-title>Title</g2f-title>
+  <g2f-title>Title *</g2f-title>
   <g2f-title-help>
     <div class="row field-helper">
       <div class="col-sm-2"></div>
@@ -279,7 +279,7 @@
   </g2f-status-help>
   <g2f-label-override-poc>
     <div class="label-override poc">
-      <div class="col-sm-2 newlabel">Points of contact for the dataset</div>
+      <div class="col-sm-2 newlabel">Points of contact for the dataset *</div>
     </div>
   </g2f-label-override-poc>
   <g2f-poc-help>
@@ -308,7 +308,7 @@
   </g2f-th-gemet-keywords-help>
   <g2f-label-override-th-opendata>
     <div class="label-override">
-      <div class="col-sm-2 newlabel">Ouverture des données</div>
+      <div class="col-sm-2 newlabel">Ouverture des données *</div>
     </div>
   </g2f-label-override-th-opendata>
   <g2f-label-override-th-datatype>
@@ -443,7 +443,7 @@
       </div>
     </div>
   </g2f-geo-denominator-help>
-  <g2f-addConstraint>Define the license</g2f-addConstraint>
+  <g2f-addConstraint>Define the license *</g2f-addConstraint>
   <g2f-label-override-otherConstraints>
     <div class="label-override">
       <div class="col-sm-2 newlabel">License</div>
