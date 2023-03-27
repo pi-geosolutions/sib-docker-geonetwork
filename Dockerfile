@@ -1,4 +1,4 @@
-ARG VERSION=4.0.6
+ARG VERSION=4.2.3
 FROM geonetwork:${VERSION}
 
 MAINTAINER Jean Pommier "jp@pi-geosolutions.fr"
