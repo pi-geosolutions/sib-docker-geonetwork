@@ -210,7 +210,7 @@
         data-search-action="true"
         data-popup-action="true"
         data-template-type="contact"
-        data-insert-modes="xlink"
+        data-insert-modes=""
         data-variables="gmd:role/gmd:CI_RoleCode/@codeListValue~{role}"/>
     </for>
     <for name="gmd:distributorContact" addDirective="data-gn-directory-entry-selector">
@@ -516,7 +516,7 @@
     out what the hell I'm doing here, contact me at jean.pommier at pi-geosolutions dot fr and
     I'll do my best
     -->
-    <view name="g2f-flat-view"
+    <view name="g2f-flat-view" default="true"
           upAndDownControlHidden="true"
           displayTooltips="false"
           hideTimeInCalendar="true"
