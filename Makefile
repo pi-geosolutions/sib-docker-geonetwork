@@ -3,7 +3,7 @@ IMAGE=pigeosolutions/sib-geonetwork
 SIBIMAGE=outils-patrinat.mnhn.fr/sib-geonetwork
 REV=`git rev-parse --short HEAD`
 DATE=`date +%Y%m%d-%H%M`
-VERSION=4.2.3
+VERSION=4.2.4
 
 all: docker-build docker-push
 

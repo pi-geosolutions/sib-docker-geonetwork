@@ -4,33 +4,32 @@ html {
 }
 
 // overwrite default colors
-@navbar-default-link-color: #fff;
+//@navbar-default-link-color: #fff;
 @navbar-default-color: #2e8e47;
 @gn-menubar-background: #2e8e47;
 @gn-menubar-background-hover: lighten(#2e8e47, 10%);
 @gn-menubar-background-active: lighten(#2e8e47, 10%);
-@btn-default-bg: #2e8e47;
+//@btn-default-bg: #2e8e47;
+@sib-green: #2e8e47;
 @brand-primary: #2e8e47;
-@btn-default-color: #fff;
+//@btn-default-color: #fff;
 @navbar-default-link-active-bg: lighten(#2e8e47, 10%);
 @navbar-default-link-hover-bg: lighten(#2e8e47, 10%);
 .btn-primary,
-.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg,
-.gn-row-main .gn-form-any .btn {
-  background-color: @btn-default-bg !important;
+.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg {
+  background-color: @sib-green !important;
 }
 .btn-primary:hover,
-.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg:hover,
-.gn-row-main .gn-form-any .btn:hover {
-  background-color: lighten(@btn-default-bg, 10%);
+.gn-search-page  .gn-form-any .input-group-btn button.btn-primary.btn-lg:hover {
+  background-color: lighten(@sib-green, 10%);
 }
 .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
 .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
-  background-color: darken(@btn-default-bg, 10%);
+  background-color: darken(@sib-green, 10%);
 }
 [data-ng-search-form] .gn-top-search .gn-form-any .btn-advanced.active {
-  background-color: lighten(@btn-default-bg, 10%);
+  background-color: lighten(@sib-green, 10%);
 }
 // [ng-app="gn_admin"]  .gn-alerts + style + sib-header  {
 //   position: relative;
@@ -41,31 +40,88 @@ html {
 // }
 .gn-top-bar {
   // z-index:2000 !important;
-  background-color: @btn-default-bg !important;
+  background-color: @sib-green;
+
+  .navbar-nav>li>a>span,
+  .navbar-nav li a .gn-user-info .gn-user-name,
+  .navbar-nav li a .gn-user-info .gn-user-role,
+  .navbar-header a {
+    color: white !important;
+  }
+  .language-switcher .btn {
+    background-color: @sib-green;
+    color: white;
+  }
+  .language-switcher .btn:hover {
+    background-color: lighten(@sib-green, 10%);
+  }
+
 }
 //
 // [ng-app="gn_editor"] .gn-editor-board {
 //   padding-top: calc(50px + 1px);
 // }
 [gn-main-viewer] .tools button, .gn-main-viewer .tools button, [gn-main-viewer] .tools [role="button"], .gn-main-viewer .tools [role="button"] {
-  background-color: @btn-default-bg;
+  background-color: @sib-green;
 }
 
 footer.gn-bottom-bar {
   display: none;
 }
 
-[ng-app="gn_admin"] .gn-top-bar {
-  .navbar-collapse {
-    background-color: unset !important;
-  }
-  .dropdown-menu {
-    > li {
-      &.active, &:hover {
-        > a {
-          color: black !important;
+[ng-app="gn_admin"] {
+  .gn-top-bar {
+    background-color: @sib-green !important;
+    .navbar-collapse {
+      background-color: @sib-green !important;
+    }
+    @media (max-width: 767px) {
+      .navbar-collapse {
+        background-color: white !important;
+      }
+    }
+    .navbar-toggle.collapsed .icon-bar {
+      background-color: white;
+    }
+    .dropdown-menu {
+      > li {
+        &.active, &:hover {
+          > a {
+            color: black !important;
+          }
         }
       }
     }
   }
+  [data-ng-controller="GnAdminController"] .main .gn-row-admin-buttons .btn-group {
+    .btn {
+      background-color: @sib-green;
+      color: white;
+    }
+    .btn:hover {
+      background-color: lighten(@sib-green, 10%) !important;
+      color: white;
+    }
+  }
 }
+
+// main page, tabs on the bottom in green (href)
+.nav-pills {
+  > li {
+    > a {
+      color: @sib-green ;
+    }
+    &.active{
+      > a {
+        color: white ;
+      }
+    }
+  }
+}
+// editor view, record titles href in green
+// and same for directory list
+.gn-results-editor .row a,
+.directory-entries-list .flex-row a{
+  color: @sib-green ;
+}
+
