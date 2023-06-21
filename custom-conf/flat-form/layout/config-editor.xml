@@ -890,13 +890,15 @@
                     <gmd:otherConstraints>
                       <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadatacodelist/LimitationsOnPublicAccess/noLimitations">Pas de restriction d’accès public</gmx:Anchor>
                     </gmd:otherConstraints>
+                  </gmd:MD_LegalConstraints>
+                  <gmd:MD_LegalConstraints>
                     <gmd:useConstraints>
                       <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">
                         otherRestrictions
                       </gmd:MD_RestrictionCode>
                     </gmd:useConstraints>
                     <gmd:otherConstraints>
-                      <gco:CharacterString>Licence Ouverte version 2.0  https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf</gco:CharacterString>
+                      <gmx:Anchor xlink:href="https://www.etalab.gouv.fr/licence-ouverte-open-licence">Licence Ouverte version 2.0</gmx:Anchor>
                     </gmd:otherConstraints>
                   </gmd:MD_LegalConstraints>
                 </gmd:resourceConstraints>
@@ -913,13 +915,15 @@
                     <gmd:otherConstraints>
                       <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadatacodelist/LimitationsOnPublicAccess/noLimitations">Pas de restriction d’accès public</gmx:Anchor>
                     </gmd:otherConstraints>
+                  </gmd:MD_LegalConstraints>
+                  <gmd:MD_LegalConstraints>
                     <gmd:useConstraints>
                       <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">
                         otherRestrictions
                       </gmd:MD_RestrictionCode>
                     </gmd:useConstraints>
                     <gmd:otherConstraints>
-                      <gco:CharacterString>Licence ODbL mai 2013 (basée sur ODbL 1.0) https://data.rennesmetropole.fr/pages/licence/</gco:CharacterString>
+                      <gmx:Anchor xlink:href="http://opendatacommons.org/licenses/odbl/summary/">Open Database License (ODbL) 1.0</gmx:Anchor>
                     </gmd:otherConstraints>
                   </gmd:MD_LegalConstraints>
                 </gmd:resourceConstraints>
@@ -936,6 +940,8 @@
                     <gmd:otherConstraints>
                       <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">Pas de restriction d’accès public</gmx:Anchor>
                     </gmd:otherConstraints>
+                  </gmd:MD_LegalConstraints>
+                  <gmd:MD_LegalConstraints>
                     <gmd:useConstraints>
                       <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">
                         otherRestrictions
