@@ -336,6 +336,11 @@
       <div class="col-sm-2 newlabel">Variables essentielles de biodiversité</div>
     </div>
   </g2f-label-override-th-ebv>
+  <g2f-label-override-th-pressref>
+    <div class="label-override">
+      <div class="col-sm-2 newlabel">Pressions sur la biodiversité</div>
+    </div>
+  </g2f-label-override-th-pressref>
   <g2f-th-opendata-keywords-help>
     <div class="field-helper no-line">
       <div class="col-sm-2"></div>
@@ -372,13 +377,29 @@
     </div>
   </g2f-th-dpsir-keywords-help>
   <g2f-th-ebv-keywords-help>
-    <div class="row field-helper">
+    <div class="row field-helper no-line">
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
 
       </div>
     </div>
   </g2f-th-ebv-keywords-help>
+  <g2f-th-pressref-keywords-help>
+    <div class="row field-helper">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+
+      </div>
+    </div>
+  </g2f-th-pressref-keywords-help>
+  <g2f-th-gemet-keywords-help>
+    <div class="row field-helper">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+        Le thésaurus GEMET propose un grand nombre de mots clefs liés à l'environnement. <a href="https://www.eionet.europa.eu/gemet/en/about/" >En savoir plus</a>.
+      </div>
+    </div>
+  </g2f-th-gemet-keywords-help>
   <g2f-label-override-territories>
     <div class="label-override">
       <div class="col-sm-2 newlabel">Territories</div>
