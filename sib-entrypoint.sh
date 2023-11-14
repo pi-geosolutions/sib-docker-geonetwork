@@ -47,7 +47,7 @@ else
   fi
 
   # Add the fix for DCAT support (fix license support)
-  # TODO: get it into core-gn codebase and remove this when https://github.com/geonetwork/core-geonetwork/pull/7176 is merged  
+  # TODO: get it into core-gn codebase and remove this when https://github.com/geonetwork/core-geonetwork/pull/7176 is merged
   cp -r /custom-conf/dcat-support/* ${JETTY_BASE}/webapps/geonetwork/WEB-INF/data/config/schema_plugins/iso19139/
 
   if [[ "$ENABLE_FLAT_FORM" == "yes" ]]; then
@@ -90,7 +90,10 @@ else
   fi
 
   # Apply translation for custom facets based on SIB thesauri
-  sed -i '2i "facet-th_dpsir": "DPSIR",\n  "facet-th_opendata": "Ouverture des données",\n  "facet-th_politiquepublique": "Politique publique",\n  "facet-th_thematiques": "Thématiques",\n  "facet-th_datatype": "Type de données",\n  "facet-th_ebv": "Variables essentielles de biodiversité",\n' ${JETTY_BASE}/webapps/geonetwork/catalog/locales/fr-v4.json
+  # fr
+  sed -i '2i "facet-th_dpsir": "DPSIR",\n  "facet-th_opendata": "Ouverture des données",\n  "facet-th_politiquepublique": "Politique publique",\n  "facet-th_thematiques": "Thématiques",\n  "facet-th_datatype": "Type de données",\n  "facet-th_ebv": "Variables essentielles de biodiversité",\n  "facet-th_pressref": "Pressions sur la biodiversité",\n' ${JETTY_BASE}/webapps/geonetwork/catalog/locales/fr-v4.json
+  # en
+  sed -i '2i "facet-th_dpsir": "DPSIR",\n  "facet-th_opendata": "Data openness",\n  "facet-th_politiquepublique": "Public policy",\n  "facet-th_thematiques": "Themes",\n  "facet-th_datatype": "Data types",\n  "facet-th_ebv": "Essential biodiversity variables",\n  "facet-th_pressref": "Pressures on biodiversity",\n' ${JETTY_BASE}/webapps/geonetwork/catalog/locales/en-v4.json
 
   echo "Custom configuration applied" > /custom-conf/applied
 fi
