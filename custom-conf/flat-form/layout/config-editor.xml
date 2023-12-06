@@ -820,9 +820,9 @@
 
 
           <text ref="g2f-label-override-th-pressref"/>
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[*/gmd:thesaurusName/*/gmd:title/*/text() = 'Pressions sur la biodiversité']"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[*/gmd:thesaurusName/*/gmd:title/*/text() = 'Pressions exercées sur la biodiversité']"/>
           <action type="add" btnLabel="g2f-add-keyword"
-                  if="count(/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[*/gmd:thesaurusName/*/gmd:title/*/text() = 'Pressions sur la biodiversité']) = 0"
+                  if="count(/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[*/gmd:thesaurusName/*/gmd:title/*/text() = 'Pressions exercées sur la biodiversité']) = 0"
                   or="descriptiveKeywords"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/*">
             <template>
@@ -836,7 +836,7 @@
                     <gmd:thesaurusName>
                       <gmd:CI_Citation>
                         <gmd:title>
-                          <gco:CharacterString>Pressions sur la biodiversité</gco:CharacterString>
+                          <gco:CharacterString>Pressions exercées sur la biodiversité</gco:CharacterString>
                         </gmd:title>
                         <gmd:identifier>
                           <gmd:MD_Identifier>
@@ -853,7 +853,7 @@
             </template>
           </action>
           <text ref="g2f-th-pressref-keywords-help"/>
-          
+
 <!--          <text ref="g2f-label-override-denominator"/>-->
 <!--          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/-->
 <!--                    */gmd:spatialResolution/-->
