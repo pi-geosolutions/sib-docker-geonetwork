@@ -104,6 +104,7 @@
     <xsl:param name="uuid"/>
 
     <dct:references>
+      <!-- SIB addon-->
       <rdf:Description rdf:about="{$url}/srv/api/records/{$uuid}/formatters/xml">
         <dct:format>
           <dct:IMT>
@@ -115,7 +116,9 @@
     </dct:references>
 
     <dct:references>
-      <rdf:Description rdf:about="{$url}/srv/api/records/{$uuid}">
+      <!-- SIB addon-->
+      <!-- <rdf:Description rdf:about="{$url}/srv/api/records/{$uuid}"> -->
+      <rdf:Description rdf:about="{$url}/srv/fre/catalog.search#/metadata/{$uuid}">
         <dct:format>
           <dct:IMT>
             <rdf:value>text/html</rdf:value>
@@ -188,7 +191,7 @@
           </dcat:mediaType>
           </xsl:if>
 
-          <!-- sib addon-->
+          <!-- SIB addon-->
           <xsl:if test="(gmd:description/gco:CharacterString)[1]!=''">
           <dct:description>
             <xsl:value-of select="(gmd:description/gco:CharacterString)[1]"/>
@@ -282,7 +285,7 @@
   <xsl:template match="gmd:MD_DataIdentification|*[contains(@gco:isoType, 'MD_DataIdentification')]"
                 mode="to-dcat">
 
-    <!-- sib addon-->
+    <!-- SIB addon-->
     <!-- <dcat:Dataset rdf:about="{$resourcePrefix}/datasets/{iso19139:getResourceCode(../../.)}"> -->
     <dcat:Dataset rdf:about="{$resourcePrefix}/{iso19139:getResourceCode(../../.)}">
       <xsl:call-template name="to-dcat"/>
@@ -301,7 +304,7 @@
     </dct:identifier>
     <!-- xpath: gmd:identificationInfo/*/gmd:citation/*/gmd:identifier/*/gmd:code -->
 
-    <!-- sib addon-->
+    <!-- SIB addon-->
     <dcat:landingPage>
       <xsl:value-of select="$resourcePrefix"/>/<xsl:value-of select="iso19139:getResourceCode(../../.)"/>
     </dcat:landingPage>
@@ -315,7 +318,7 @@
     <dct:abstract>
       <xsl:value-of select="gmd:abstract/gco:CharacterString"/>
 
-      <!-- sib addon-->
+      <!-- SIB addon-->
       <!-- Layout will be visible only in source mode in the browser. If not in source mode, newlines won't be displayed and the keywords will be shown inline -->
       <xsl:text>&#xa;</xsl:text> <!-- linebreak -->
       <!-- Keywords -->
