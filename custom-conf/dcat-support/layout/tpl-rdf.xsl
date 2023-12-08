@@ -301,6 +301,10 @@
     </dct:identifier>
     <!-- xpath: gmd:identificationInfo/*/gmd:citation/*/gmd:identifier/*/gmd:code -->
 
+    <!-- sib addon-->
+    <dcat:landingPage>
+      <xsl:value-of select="$resourcePrefix"/>/<xsl:value-of select="iso19139:getResourceCode(../../.)"/>
+    </dcat:landingPage>
 
     <dct:title>
       <xsl:value-of select="gmd:citation/*/gmd:title/gco:CharacterString"/>
