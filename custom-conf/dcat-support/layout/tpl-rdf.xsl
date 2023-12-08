@@ -187,6 +187,14 @@
             <xsl:value-of select="(gmd:protocol/gmx:Anchor)[1]"/>
           </dcat:mediaType>
           </xsl:if>
+
+          <!-- sib addon-->
+          <xsl:if test="(gmd:description/gco:CharacterString)[1]!=''">
+          <dct:description>
+            <xsl:value-of select="(gmd:description/gco:CharacterString)[1]"/>
+          </dct:description>
+          </xsl:if>
+
           <xsl:if test="(gmd:protocol/gco:CharacterString)[1]!=''">
           <dct:format>
             <xsl:value-of select="(gmd:protocol/gco:CharacterString)[1]"/>
@@ -273,7 +281,10 @@
   -->
   <xsl:template match="gmd:MD_DataIdentification|*[contains(@gco:isoType, 'MD_DataIdentification')]"
                 mode="to-dcat">
-    <dcat:Dataset rdf:about="{$resourcePrefix}/datasets/{iso19139:getResourceCode(../../.)}">
+
+    <!-- sib addon-->
+    <!-- <dcat:Dataset rdf:about="{$resourcePrefix}/datasets/{iso19139:getResourceCode(../../.)}"> -->
+    <dcat:Dataset rdf:about="{$resourcePrefix}/{iso19139:getResourceCode(../../.)}">
       <xsl:call-template name="to-dcat"/>
     </dcat:Dataset>
   </xsl:template>
@@ -299,6 +310,16 @@
 
     <dct:abstract>
       <xsl:value-of select="gmd:abstract/gco:CharacterString"/>
+
+      <!-- sib addon-->
+      <!-- Layout will be visible only in source mode in the browser. If not in source mode, newlines won't be displayed and the keywords will be shown inline -->
+      <xsl:text>&#xa;</xsl:text> <!-- linebreak -->
+      <!-- Keywords -->
+      <xsl:for-each-group select="//gmd:MD_Keywords[(gmd:thesaurusName)]/gmd:keyword"
+      group-by="gco:CharacterString|gmx:Anchor">
+        <xsl:text>&#xa;</xsl:text> <!-- linebreak -->
+        <xsl:value-of select="normalize-space(../gmd:thesaurusName/*/gmd:title)"/> : <xsl:value-of select="normalize-space(gco:CharacterString|gmx:Anchor)"/><xsl:text>.</xsl:text>
+      </xsl:for-each-group>
     </dct:abstract>
     <!-- xpath: gmd:identificationInfo/*/gmd:abstract/gco:CharacterString -->
 
