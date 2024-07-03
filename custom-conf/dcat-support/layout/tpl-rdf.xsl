@@ -57,6 +57,31 @@
   <xsl:variable name="resourcePrefix"
                 select="util:getSettingValue('metadata/resourceIdentifierPrefix')"/>
 
+
+  <!--
+  RDF Property:	dcterms:accrualPeriodicity
+  Definition:	The frequency at which a dataset is published.
+  Range:	dcterms:Frequency (A rate at which something recurs)
+  Usage note:	The value of dcterms:accrualPeriodicity gives the rate at which the dataset-as-a-whole is updated. This may be complemented by dcat:temporalResolution to give the time between collected data points in a time series.
+  -->
+  <xsl:variable name="isoFrequencyToDublinCore"
+                as="node()*">
+    <entry key="continual">CONT</entry>
+    <entry key="daily">DAILY</entry>
+    <entry key="weekly">WEEKLY</entry>
+    <entry key="fortnightly">BIWEEKLY</entry>
+    <entry key="monthly">MONTHLY</entry>
+    <entry key="quarterly">QUARTERLY</entry>
+    <entry key="biannually">ANNUAL_2</entry>
+    <entry key="annually">ANNUAL</entry>
+    <entry key="irregular">IRREG</entry>
+    <entry key="unknown">UNKNOWN</entry>
+    <!--
+    <entry key="asNeeded"></entry>
+    <entry key="notPlanned"></entry>
+    -->
+  </xsl:variable>
+
   <!--
     Create reference block to metadata record and dataset to be added in dcat:Catalog usually.
   -->
@@ -426,9 +451,17 @@
 
     <!-- "The frequency with which dataset is published." See placetime.com intervals. -->
     <xsl:for-each
-      select="gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode">
+      select="gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency">
+       <xsl:variable name="dcFrequency"
+                  as="xs:string?"
+                  select="$isoFrequencyToDublinCore[@key = current()/*/@codeListValue]"/>
       <dct:accrualPeriodicity>
-        <xsl:value-of select="@codeListValue"/>
+        <!-- <xsl:value-of select="@codeListValue"/> -->
+        <!-- <xsl:value-of select="$dcFrequency"/> -->
+        <xsl:value-of select="if($dcFrequency)
+                                 then $dcFrequency
+                                 else */@codeListValue"/>
+        <!-- <dct:Frequency rdf:about="{$dcFrequency}"/> -->
       </dct:accrualPeriodicity>
     </xsl:for-each>
     <!-- xpath: gmd:identificationInfo/*/gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue -->
