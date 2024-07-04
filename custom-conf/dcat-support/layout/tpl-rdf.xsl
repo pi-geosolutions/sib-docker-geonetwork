@@ -377,9 +377,13 @@
     <!-- "The main category of the dataset. A dataset can have multiple themes."
     -->
     <xsl:for-each
-      select="gmd:descriptiveKeywords/gmd:MD_Keywords[(gmd:thesaurusName)]/gmd:keyword">
+      select="gmd:descriptiveKeywords/gmd:MD_Keywords[(gmd:thesaurusName)]/gmd:keyword/gco:CharacterString">
       <dcat:theme
-        rdf:resource="{iso19139:getKeywordURI(., iso19139:getThesaurusURI(../gmd:thesaurusName, $resourcePrefix))}"/>
+        rdf:resource="{iso19139:getKeywordURI(.., iso19139:getThesaurusURI(../../gmd:thesaurusName, $resourcePrefix))}"/>
+    </xsl:for-each>
+    <xsl:for-each
+      select="gmd:descriptiveKeywords/gmd:MD_Keywords[(gmd:thesaurusName)]/gmd:keyword/gmx:Anchor">
+      <dcat:theme rdf:resource="{@xlink:href}" />
     </xsl:for-each>
 
     <xsl:for-each select="gmd:topicCategory/gmd:MD_TopicCategoryCode[.!='']">
