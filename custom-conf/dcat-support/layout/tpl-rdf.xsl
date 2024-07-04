@@ -57,31 +57,6 @@
   <xsl:variable name="resourcePrefix"
                 select="util:getSettingValue('metadata/resourceIdentifierPrefix')"/>
 
-
-  <!--
-  RDF Property:	dcterms:accrualPeriodicity
-  Definition:	The frequency at which a dataset is published.
-  Range:	dcterms:Frequency (A rate at which something recurs)
-  Usage note:	The value of dcterms:accrualPeriodicity gives the rate at which the dataset-as-a-whole is updated. This may be complemented by dcat:temporalResolution to give the time between collected data points in a time series.
-  -->
-  <xsl:variable name="isoFrequencyToDublinCore"
-                as="node()*">
-    <entry key="continual">CONT</entry>
-    <entry key="daily">DAILY</entry>
-    <entry key="weekly">WEEKLY</entry>
-    <entry key="fortnightly">BIWEEKLY</entry>
-    <entry key="monthly">MONTHLY</entry>
-    <entry key="quarterly">QUARTERLY</entry>
-    <entry key="biannually">ANNUAL_2</entry>
-    <entry key="annually">ANNUAL</entry>
-    <entry key="irregular">IRREG</entry>
-    <entry key="unknown">UNKNOWN</entry>
-    <!--
-    <entry key="asNeeded"></entry>
-    <entry key="notPlanned"></entry>
-    -->
-  </xsl:variable>
-
   <!--
     Create reference block to metadata record and dataset to be added in dcat:Catalog usually.
   -->
@@ -129,7 +104,6 @@
     <xsl:param name="uuid"/>
 
     <dct:references>
-      <!-- SIB addon-->
       <rdf:Description rdf:about="{$url}/srv/api/records/{$uuid}/formatters/xml">
         <dct:format>
           <dct:IMT>
@@ -376,6 +350,11 @@
 
     <!-- "The main category of the dataset. A dataset can have multiple themes."
     -->
+
+    <!-- SIB addon-->
+    <!-- If keyword is added using Anchor mode, this should be reflected here and the theme should point to the anchor link
+    Used for HVD classification: use Anchor. The theme should then be discoverable by data.gouv.fr directly
+     -->
     <xsl:for-each
       select="gmd:descriptiveKeywords/gmd:MD_Keywords[(gmd:thesaurusName)]/gmd:keyword/gco:CharacterString">
       <dcat:theme
@@ -452,8 +431,34 @@
     </xsl:for-each>
     <!-- xpath: gmd:identificationInfo/*/gmd:pointOfContact -->
 
-
     <!-- "The frequency with which dataset is published." See placetime.com intervals. -->
+    <!-- SIB addon-->
+
+    <!--
+    RDF Property:	dcterms:accrualPeriodicity
+    Definition:	The frequency at which a dataset is published.
+    Range:	dcterms:Frequency (A rate at which something recurs)
+    Usage note:	The value of dcterms:accrualPeriodicity gives the rate at which the dataset-as-a-whole is updated. This may be complemented by dcat:temporalResolution to give the time between collected data points in a time series.
+    -->
+    <xsl:variable name="isoFrequencyToDublinCore"
+                  as="node()*">
+      <entry key="continual">CONT</entry>
+      <entry key="daily">DAILY</entry>
+      <entry key="weekly">WEEKLY</entry>
+      <entry key="fortnightly">BIWEEKLY</entry>
+      <entry key="monthly">MONTHLY</entry>
+      <entry key="quarterly">QUARTERLY</entry>
+      <entry key="biannually">ANNUAL_2</entry>
+      <entry key="annually">ANNUAL</entry>
+      <entry key="irregular">IRREG</entry>
+      <entry key="unknown">UNKNOWN</entry>
+      <!--
+      <entry key="asNeeded"></entry>
+      <entry key="notPlanned"></entry>
+      -->
+    </xsl:variable>
+
+    <!-- Try mapping the values to Dublin Core values if listed (see above). Deals with the fact that codelists are slightly diverging between DC and ISO -->
     <xsl:for-each
       select="gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency">
        <xsl:variable name="dcFrequency"
@@ -516,9 +521,9 @@
     <xsl:for-each select="gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints">
       <xsl:choose>
         <xsl:when test="gmd:MD_RestrictionCode[@codeListValue!='otherRestrictions']">
-          <dct:license>
+          <dct:accessRights>
             <xsl:value-of select="@codeListValue"/>
-          </dct:license>
+          </dct:accessRights>
         </xsl:when>
         <xsl:otherwise>
             <xsl:call-template name="legalOtherConstraints">
@@ -529,7 +534,6 @@
       </xsl:choose>
     </xsl:for-each>
     <!-- xpath: gmd:identificationInfo/*/gmd:resourceConstraints/??? -->
-
 
     <xsl:for-each select="../../gmd:distributionInfo/*/gmd:transferOptions/*/gmd:onLine">
       <dcat:distribution rdf:resource="{iso19139:RecordUri($uuid)}#{encode-for-uri(gmd:CI_OnlineResource/gmd:protocol/*/text())}-{encode-for-uri(gmd:CI_OnlineResource/gmd:name/(gco:CharacterString|gmx:Anchor)/text())}"/>
