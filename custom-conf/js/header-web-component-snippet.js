@@ -1,9 +1,9 @@
 /*
  * Create a WebComponent to embed the menu from naturefrance.fr
-*/
+ */
 
 // ref https://sebastiandedeyne.com/embed-a-web-page-with-a-web-component-and-the-shadow-dom/
-let sib_style = document.createElement('style');
+let sib_style = document.createElement("style");
 sib_style.textContent = `
     header {
       z-index: 1000;
@@ -35,14 +35,14 @@ sib_style.textContent = `
 
 class WCEmbeddedHeader extends HTMLElement {
   connectedCallback() {
-    fetch(this.getAttribute('src'))
-      .then(response => response.text())
-      .then(html => {
+    fetch(this.getAttribute("src"))
+      .then((response) => response.text())
+      .then((html) => {
         // replace all relative references (href, src)
-        html = html.replaceAll('="//','="https://')
-        html = html.replaceAll('="/','="https://naturefrance.fr/')
+        html = html.replaceAll('="//', '="https://');
+        html = html.replaceAll('="/', '="https://naturefrance.fr/');
         // console.log(html)
-        const shadow = this.attachShadow({ mode: 'open'});
+        const shadow = this.attachShadow({ mode: "open" });
         shadow.innerHTML = html;
 
         // Add custom style (see above)
@@ -50,11 +50,11 @@ class WCEmbeddedHeader extends HTMLElement {
 
         // Hide main content and footer (keep only header)
         const mainContent = this.shadowRoot.querySelector("main");
-        if (typeof mainContent !== 'undefined') {
+        if (typeof mainContent !== "undefined") {
           mainContent.parentNode.removeChild(mainContent);
         }
         const footerContent = this.shadowRoot.querySelector("footer");
-        if (typeof footerContent !== 'undefined') {
+        if (typeof footerContent !== "undefined") {
           footerContent.parentNode.removeChild(footerContent);
         }
 
@@ -64,40 +64,44 @@ class WCEmbeddedHeader extends HTMLElement {
         const menuDiv = this.shadowRoot.querySelector("#menu--header");
         const menuBanner = this.shadowRoot.querySelector(".menu--banner");
 
-        menuButton.addEventListener('click', function(e) {
+        menuButton.addEventListener("click", function (e) {
           // console.log('clicked button');
           if (menuButtonBurger.getAttribute("aria-expanded") == "true") {
-            menuButtonBurger.setAttribute("aria-expanded", "false")
+            menuButtonBurger.setAttribute("aria-expanded", "false");
             menuDiv.classList.remove("show");
             menuBanner.style.transform = "translateX(-100%)";
           } else {
-            menuButtonBurger.setAttribute("aria-expanded", "true")
+            menuButtonBurger.setAttribute("aria-expanded", "true");
             menuDiv.classList.add("show");
             menuBanner.style.transform = "translateX(0)";
           }
         });
         // Hide the menu when user clicks outside in the modal part
-        this.shadowRoot.querySelector(".menu--backdrop").addEventListener('click', function() {
-          menuButtonBurger.ariaExpanded = "false";
-          menuDiv.classList.remove("show");
-          menuBanner.style.transform = "translateX(-100%)";
-        });
+        this.shadowRoot
+          .querySelector(".menu--backdrop")
+          .addEventListener("click", function () {
+            menuButtonBurger.ariaExpanded = "false";
+            menuDiv.classList.remove("show");
+            menuBanner.style.transform = "translateX(-100%)";
+          });
 
-        let shadowRoot = this.shadowRoot
+        let shadowRoot = this.shadowRoot;
         // dynamic behaviour of the menu sections
-        let menuButtons = this.shadowRoot.querySelectorAll("#accordion-menu nav button.btn-link");
+        let menuButtons = this.shadowRoot.querySelectorAll(
+          "#accordion-menu nav button.btn-link"
+        );
         // console.log("buttons");
         // console.log(menuButtons);
-        menuButtons.forEach(function(item, index) {
-          item.addEventListener('click', function () {
+        menuButtons.forEach(function (item, index) {
+          item.addEventListener("click", function () {
             // console.log("should open " + this.getAttribute('data-target'));
-            const target_menu_id = this.getAttribute('data-target');
+            const target_menu_id = this.getAttribute("data-target");
 
             // console.log("target menu block is " + target_menu_id);
-            let menus = shadowRoot.querySelectorAll('#accordion-menu nav div.collapse');
+            let menus = shadowRoot.querySelectorAll("#accordion-menu nav div.collapse");
             // console.log(menus);
             menus.forEach(function (item, index) {
-              if (item.id != '#'+target_menu_id) {
+              if (item.id != "#" + target_menu_id) {
                 // console.log("should toggle out menu " + item.id);
                 item.classList.remove("show");
                 // item.setAttribute("aria-expanded", "false")
@@ -106,28 +110,22 @@ class WCEmbeddedHeader extends HTMLElement {
             });
             let target_menu = this.parentNode.querySelector(target_menu_id);
             target_menu.classList.add("show");
-            target_menu.setAttribute("aria-expanded", "true")
-          })
+            target_menu.setAttribute("aria-expanded", "true");
+          });
         });
-
-
 
         // Open partners page upon clicking the "Sites" button on the right
         const sitesButton = this.shadowRoot.querySelector("button.menu--nos-site");
-        sitesButton.addEventListener('click', function(e) {
-          window.open("https://naturefrance.fr/ressources-accessibles","_self");
+        sitesButton.addEventListener("click", function (e) {
+          window.open("https://naturefrance.fr/ressources-accessibles", "_self");
         });
       });
-
   }
 }
 
-window.customElements.define(
-  'sib-header',
-  WCEmbeddedHeader
-);
+window.customElements.define("sib-header", WCEmbeddedHeader);
 
-let sib_footer_style = document.createElement('style');
+let sib_footer_style = document.createElement("style");
 sib_footer_style.textContent = `
     .region--footer-top::before {
       position: unset !important;
@@ -149,13 +147,13 @@ sib_footer_style.textContent = `
 
 class WCEmbeddedFooter extends HTMLElement {
   connectedCallback() {
-    fetch(this.getAttribute('src'))
-      .then(response => response.text())
-      .then(html => {
+    fetch(this.getAttribute("src"))
+      .then((response) => response.text())
+      .then((html) => {
         // replace all relative references (href, src)
-        html = html.replaceAll('="//','="https://')
-        html = html.replaceAll('="/','="https://naturefrance.fr/')
-        const shadow = this.attachShadow({ mode: 'open'});
+        html = html.replaceAll('="//', '="https://');
+        html = html.replaceAll('="/', '="https://naturefrance.fr/');
+        const shadow = this.attachShadow({ mode: "open" });
         shadow.innerHTML = html;
 
         // Add custom style (see above)
@@ -163,22 +161,20 @@ class WCEmbeddedFooter extends HTMLElement {
 
         // Hide main content and footer (keep only header)
         const mainContent = this.shadowRoot.querySelector("main");
-        if (typeof mainContent !== 'undefined') {
+        if (typeof mainContent !== "undefined") {
           mainContent.parentNode.removeChild(mainContent);
         }
         const headerContent = this.shadowRoot.querySelector("header");
-        if (typeof headerContent !== 'undefined') {
+        if (typeof headerContent !== "undefined") {
           headerContent.parentNode.removeChild(headerContent);
         }
         const footerTopContent = this.shadowRoot.querySelector(".region--footer-top");
-        if (typeof footerTopContent !== 'undefined') {
-          footerTopContent.innerHTML='<div class="gn-credits">Propulsé par GeoNetwork 4</div>';
+        if (typeof footerTopContent !== "undefined") {
+          footerTopContent.innerHTML =
+            '<div class="gn-credits">Propulsé par GeoNetwork 4</div>';
         }
       });
   }
 }
 
-window.customElements.define(
-  'sib-footer',
-  WCEmbeddedFooter
-);
+window.customElements.define("sib-footer", WCEmbeddedFooter);
