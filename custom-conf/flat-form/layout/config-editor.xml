@@ -545,6 +545,9 @@
         <thesaurus key="external.theme.pressref"
                    fieldset="false"
                    transformations="to-iso19139-keyword-with-anchor"/>
+        <thesaurus key="external.theme.high-value-dataset-category-skos-ap-eu"
+                   fieldset="false"
+                   transformations="to-iso19139-keyword-with-anchor"/>
       </thesaurusList>
       <sidePanel>
         <directive data-gn-overview-manager=""/>
@@ -734,7 +737,7 @@
                         <gmd:identifier>
                           <gmd:MD_Identifier>
                             <gmd:code>
-                              <gmx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/local.theme.politiquepublique">geonetwork.thesaurus.local.theme.politiquepublique</gmx:Anchor>
+                              <gmx:Anchor xlink:href="/geonetwork/srv/api/registries/vocabularies/local.theme.politiquepublique">geonetwork.thesaurus.local.theme.politiquepublique</gmx:Anchor>
                             </gmd:code>
                           </gmd:MD_Identifier>
                         </gmd:identifier>
@@ -770,7 +773,7 @@
                         <gmd:identifier>
                           <gmd:MD_Identifier>
                             <gmd:code>
-                              <gmx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/local.theme.dpsir">geonetwork.thesaurus.local.theme.dpsir</gmx:Anchor>
+                              <gmx:Anchor xlink:href="/geonetwork/srv/api/registries/vocabularies/local.theme.dpsir">geonetwork.thesaurus.local.theme.dpsir</gmx:Anchor>
                             </gmd:code>
                           </gmd:MD_Identifier>
                         </gmd:identifier>
@@ -805,7 +808,7 @@
                         <gmd:identifier>
                           <gmd:MD_Identifier>
                             <gmd:code>
-                              <gmx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/local.theme.ebv">geonetwork.thesaurus.local.theme.ebv</gmx:Anchor>
+                              <gmx:Anchor xlink:href="/geonetwork/srv/api/registries/vocabularies/local.theme.ebv">geonetwork.thesaurus.local.theme.ebv</gmx:Anchor>
                             </gmd:code>
                           </gmd:MD_Identifier>
                         </gmd:identifier>
@@ -853,6 +856,52 @@
             </template>
           </action>
           <text ref="g2f-th-pressref-keywords-help"/>
+
+          <text ref="g2f-label-override-th-hvd"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[*/gmd:thesaurusName/*/gmd:title/*/text() = 'High-value dataset categories']"/>
+          <action type="add" btnLabel="g2f-add-keyword"
+                  if="count(/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[*/gmd:thesaurusName/*/gmd:title/*/text() = 'High-value dataset categories']) = 0"
+                  or="descriptiveKeywords"
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/*">
+            <template>
+              <snippet>
+                <gmd:descriptiveKeywords>
+                  <gmd:MD_Keywords>
+                    <gmd:type>
+                      <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode"
+                                              codeListValue="theme"/>
+                    </gmd:type>
+                    <gmd:thesaurusName>
+                      <gmd:CI_Citation>
+                        <gmd:title>
+                          <gmx:Anchor xlink:href="http://data.europa.eu/bna/asd487ae75">High-value dataset categories</gmx:Anchor>
+                        </gmd:title>
+                        <gmd:date>
+                          <gmd:CI_Date>
+                            <gmd:date>
+                              <gco:Date>2024-07-09</gco:Date>
+                            </gmd:date>
+                            <gmd:dateType>
+                              <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                   codeListValue="publication"/>
+                            </gmd:dateType>
+                          </gmd:CI_Date>
+                        </gmd:date>
+                        <gmd:identifier>
+                          <gmd:MD_Identifier>
+                            <gmd:code>
+                              <gmx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.high-value-dataset-category-skos-ap-eu">geonetwork.thesaurus.external.theme.high-value-dataset-category-skos-ap-eu</gmx:Anchor>
+                            </gmd:code>
+                          </gmd:MD_Identifier>
+                        </gmd:identifier>
+                      </gmd:CI_Citation>
+                    </gmd:thesaurusName>
+                  </gmd:MD_Keywords>
+                </gmd:descriptiveKeywords>
+              </snippet>
+            </template>
+          </action>
+          <text ref="g2f-th-hvd-keywords-help"/>
 
 <!--          <text ref="g2f-label-override-denominator"/>-->
 <!--          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/-->
@@ -904,6 +953,53 @@
           <field name="g2f-creation-or-update-date"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:date"/>
           <text ref="g2f-time-updatedate-help"/>
+
+<!--
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode"
+                 or="maintenanceAndUpdateFrequency"
+                 in="/gmd:MD_Metadata/gmd:identificationInfo/*"
+                 if="count(/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:maintenanceAndUpdateFrequency) = 0"
+          />-->
+
+          <!-- Update frequency-->
+
+<!--          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceMaintenance/*/gmd:maintenanceAndUpdateFrequency"/>-->
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceMaintenance/*/gmd:maintenanceAndUpdateFrequency"
+                 or="maintenanceAndUpdateFrequency"
+                 in="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceMaintenance/*"
+                 if="count(/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceMaintenance/*/gmd:maintenanceAndUpdateFrequency) = 0"
+          />
+          <text ref="g2f-maintenancefrequencycode-help"/>
+
+
+
+          <text ref="g2f-label-override-temporal-extent"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:extent/*/gmd:temporalElement"/>
+          <action type="add"
+                  btnLabel="g2f-add-temporal-extent"
+                  if="count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:extent/*/gmd:temporalElement) = 0"
+                  or="extent"
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/*">
+            <template>
+              <snippet>
+                <gmd:extent>
+                  <gmd:EX_Extent>
+                    <gmd:temporalElement>
+                      <gmd:EX_TemporalExtent>
+                        <gmd:extent>
+                          <gml:TimePeriod>
+                            <gml:beginPosition/>
+                            <gml:endPosition/>
+                          </gml:TimePeriod>
+                        </gmd:extent>
+                      </gmd:EX_TemporalExtent>
+                    </gmd:temporalElement>
+                  </gmd:EX_Extent>
+                </gmd:extent>
+              </snippet>
+            </template>
+          </action>
+          <text ref="g2f-temporal-extent-help"/>
 
 
           <!--          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceConstraints/*/gmd:useLimitation"/>-->
@@ -1001,6 +1097,7 @@
       <flatModeExceptions>
         <for name="gmd:descriptiveKeywords" />
         <for name="gmd:status"/>
+        <for name="gmd:MD_MaintenanceFrequencyCode"/>
         <for name="gmd:pointOfContact"/>
         <for name="gmd:spatialResolution"/>
         <for name="gmd:denominator"/>

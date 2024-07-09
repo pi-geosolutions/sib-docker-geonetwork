@@ -67,6 +67,7 @@
   <linkToPortal-help>Read here the full details and access to the data.</linkToPortal-help>
   <citationProposal>Citation proposal</citationProposal>
   <citationProposal-help>This proposal was automatically generated, check if the metadata authors did not specified custom citation requirements.</citationProposal-help>
+  <citationAdditional>When using this resource in a publication, also cite the related work(s) with:</citationAdditional>
   <associatedResources>Associated resources</associatedResources>
 
   <!-- XSD error translation -->
@@ -308,22 +309,22 @@
   </g2f-th-gemet-keywords-help>
   <g2f-label-override-th-opendata>
     <div class="label-override">
-      <div class="col-sm-2 newlabel">Ouverture des données *</div>
+      <div class="col-sm-2 newlabel">Dataset openness *</div>
     </div>
   </g2f-label-override-th-opendata>
   <g2f-label-override-th-datatype>
     <div class="label-override">
-      <div class="col-sm-2 newlabel">Type de données</div>
+      <div class="col-sm-2 newlabel">Type of dataset</div>
     </div>
   </g2f-label-override-th-datatype>
   <g2f-label-override-th-thematiques>
     <div class="label-override">
-      <div class="col-sm-2 newlabel">Thématiques</div>
+      <div class="col-sm-2 newlabel">Themes</div>
     </div>
   </g2f-label-override-th-thematiques>
   <g2f-label-override-th-politiquepublique>
     <div class="label-override">
-      <div class="col-sm-2 newlabel">Politique publique</div>
+      <div class="col-sm-2 newlabel">Public policies</div>
     </div>
   </g2f-label-override-th-politiquepublique>
   <g2f-label-override-th-dpsir>
@@ -333,7 +334,7 @@
   </g2f-label-override-th-dpsir>
   <g2f-label-override-th-ebv>
     <div class="label-override">
-      <div class="col-sm-2 newlabel">Variables essentielles de biodiversité</div>
+      <div class="col-sm-2 newlabel">Core biodiversity variables</div>
     </div>
   </g2f-label-override-th-ebv>
   <g2f-label-override-th-pressref>
@@ -341,6 +342,11 @@
       <div class="col-sm-2 newlabel">Pressures on biodiversity</div>
     </div>
   </g2f-label-override-th-pressref>
+  <g2f-label-override-th-hvd>
+    <div class="label-override">
+      <div class="col-sm-2 newlabel">HVD</div>
+    </div>
+  </g2f-label-override-th-hvd>
   <g2f-th-opendata-keywords-help>
     <div class="field-helper no-line">
       <div class="col-sm-2"></div>
@@ -385,13 +391,20 @@
     </div>
   </g2f-th-ebv-keywords-help>
   <g2f-th-pressref-keywords-help>
-    <div class="row field-helper">
+    <div class="row field-helper no-line">
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
 
       </div>
     </div>
   </g2f-th-pressref-keywords-help>
+  <g2f-th-hvd-keywords-help>
+    <div class="row field-helper">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+      </div>
+    </div>
+  </g2f-th-hvd-keywords-help>
   <g2f-th-gemet-keywords-help>
     <div class="row field-helper">
       <div class="col-sm-2"></div>
@@ -485,8 +498,33 @@
     <div class="row field-helper">
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
-        Date de création ou dernière date de mise à jour. En cas de mise à jour, préférez la date de mise à jour (la plus récente).
+        Date of creation or last update. If relevant, prefer the date of last update.
       </div>
     </div>
   </g2f-time-updatedate-help>
+
+  <g2f-maintenancefrequencycode>Update frequency</g2f-maintenancefrequencycode>
+  <g2f-maintenancefrequencycode-help>
+    <div class="row field-helper  no-line">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+        Update frequency of the dataset. Also called Accrual Periodicity in DCAT.
+      </div>
+    </div>
+  </g2f-maintenancefrequencycode-help>
+
+  <g2f-label-override-temporal-extent>
+    <div class="label-override">
+      <div class="col-sm-2 newlabel">Temporal extent</div>
+    </div>
+  </g2f-label-override-temporal-extent>
+  <g2f-add-temporal-extent>Add a temporal extent</g2f-add-temporal-extent>
+  <g2f-temporal-extent-help>
+    <div class="row field-helper">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+        Temporal extent (span of time related the dataset relates to. It is accepted to mention only the begin or the end date).
+      </div>
+    </div>
+  </g2f-temporal-extent-help>
 </strings>

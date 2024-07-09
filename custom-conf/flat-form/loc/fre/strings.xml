@@ -61,6 +61,7 @@
   <bboxesSection>Zone géographique</bboxesSection>
   <citationProposal>Proposition de citation</citationProposal>
   <citationProposal-help>Cette proposition de citation a été générée automatiquement selon le format suggéré par DataCite. Nous vous invitons à vérifier dans les métadonnées si les auteurs n'ont pas imposé un format de citation spécifique.</citationProposal-help>
+  <citationAdditional>Pour toute utilisation de cette ressource dans une publication, merci de citer également les travaux suivants :</citationAdditional>
   <associatedResources>Ressources associées</associatedResources>
 
   <keywordFrom>Mots clés - </keywordFrom>
@@ -321,6 +322,11 @@
       <div class="col-sm-2 newlabel">Pressions exercées sur la biodiversité</div>
     </div>
   </g2f-label-override-th-pressref>
+  <g2f-label-override-th-hvd>
+    <div class="label-override">
+      <div class="col-sm-2 newlabel">HVD</div>
+    </div>
+  </g2f-label-override-th-hvd>
   <g2f-th-opendata-keywords-help>
     <div class="field-helper no-line">
       <div class="col-sm-2"></div>
@@ -365,13 +371,19 @@
     </div>
   </g2f-th-ebv-keywords-help>
   <g2f-th-pressref-keywords-help>
-    <div class="row field-helper">
+    <div class="row field-helper no-line">
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
-
       </div>
     </div>
   </g2f-th-pressref-keywords-help>
+  <g2f-th-hvd-keywords-help>
+    <div class="row field-helper">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+      </div>
+    </div>
+  </g2f-th-hvd-keywords-help>
   <g2f-th-gemet-keywords-help>
     <div class="row field-helper">
       <div class="col-sm-2"></div>
@@ -468,11 +480,35 @@
   </g2f-license-help>
   <g2f-creation-or-update-date>Date de creation/MaJ de la donnée</g2f-creation-or-update-date>
   <g2f-time-updatedate-help>
-    <div class="row field-helper">
+    <div class="row field-helper  no-line">
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
         Date de création ou dernière date de mise à jour. En cas de mise à jour, préférez la date de mise à jour (la plus récente).
       </div>
     </div>
   </g2f-time-updatedate-help>
+  <g2f-maintenancefrequencycode>Fréquence de mise à jour</g2f-maintenancefrequencycode>
+  <g2f-maintenancefrequencycode-help>
+    <div class="row field-helper  no-line">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+        Fréquence de mise à jour de la donnée
+      </div>
+    </div>
+  </g2f-maintenancefrequencycode-help>
+
+  <g2f-label-override-temporal-extent>
+    <div class="label-override">
+      <div class="col-sm-2 newlabel">Emprise temporelle</div>
+    </div>
+  </g2f-label-override-temporal-extent>
+  <g2f-add-temporal-extent>Ajouter une emprise temporelle</g2f-add-temporal-extent>
+  <g2f-temporal-extent-help>
+    <div class="row field-helper">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+        Etendue temporelle (période de temps concernée par la donnée. Il est possible de ne renseigner que la date de début ou de fin).
+      </div>
+    </div>
+  </g2f-temporal-extent-help>
 </strings>

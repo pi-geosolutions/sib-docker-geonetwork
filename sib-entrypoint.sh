@@ -64,6 +64,7 @@ else
   printf '\n@import "gn_navbar_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_navbar_default.less
   printf '\n@import "gn_search_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_search_default.less
   printf '\n@import "gn_editor_custom_sib.less";' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/gn_editor_default.less
+  printf '' >> ${JETTY_BASE}/webapps/geonetwork/catalog/views/default/less/srv_custom_style_default.less
 
 
   # Fix translations
