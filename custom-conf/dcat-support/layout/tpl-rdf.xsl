@@ -286,7 +286,8 @@
 
     <!-- SIB addon-->
     <!-- <dcat:Dataset rdf:about="{$resourcePrefix}/datasets/{iso19139:getResourceCode(../../.)}"> -->
-    <dcat:Dataset rdf:about="{$resourcePrefix}/{iso19139:getResourceCode(../../.)}">
+    <xsl:variable name="uuid" select="../../gmd:fileIdentifier/gco:CharacterString"/>
+    <dcat:Dataset rdf:about="{$url}/srv/fre/catalog.search#/metadata/{$uuid}">
       <xsl:call-template name="to-dcat"/>
     </dcat:Dataset>
   </xsl:template>
@@ -305,7 +306,7 @@
 
     <!-- SIB addon-->
     <dcat:landingPage>
-      <xsl:value-of select="$resourcePrefix"/>/<xsl:value-of select="iso19139:getResourceCode(../../.)"/>
+      <xsl:value-of select="$url"/>/srv/fre/catalog.search#/metadata/<xsl:value-of select="$uuid"/>
     </dcat:landingPage>
 
     <dct:title>
