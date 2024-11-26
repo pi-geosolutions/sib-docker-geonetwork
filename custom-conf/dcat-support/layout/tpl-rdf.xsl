@@ -30,6 +30,7 @@
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:gco="http://www.isotc211.org/2005/gco"
                 xmlns:gmd="http://www.isotc211.org/2005/gmd"
@@ -544,6 +545,30 @@
 
     <!-- xpath: gmd:distributionInfo/*/gmd:transferOptions/*/gmd:onLine/gmd:CI_OnlineResource -->
 
+
+
+    <!-- SIB addon-->
+    <!-- Add contactPoint vcard, for data.gouv harvesting. Use the metadata point of -->
+    <xsl:for-each-group
+      select="gmd:pointOfContact/gmd:CI_ResponsibleParty[gmd:organisationName/gco:CharacterString!='']"
+      group-by="gmd:organisationName/gco:CharacterString">
+      <!-- Organization description.
+        Organization could be linked to a catalogue, a catalogue record.
+
+        xpath: //gmd:organisationName
+      -->
+      <dcat:contactPoint>
+        <vcard:Kind rdf:about="{$resourcePrefix}/organizations/{encode-for-uri(current-grouping-key())}">
+          <vcard:fn><xsl:value-of select="current-grouping-key()"/></vcard:fn>
+          <xsl:for-each-group
+            select="//gmd:CI_ResponsibleParty[gmd:organisationName/gco:CharacterString=current-grouping-key()]"
+            group-by="gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString">
+            <vcard:hasEmail
+              rdf:resource="mailto:{current-grouping-key()}"/>
+          </xsl:for-each-group>
+        </vcard:Kind>
+      </dcat:contactPoint>
+    </xsl:for-each-group>
 
     <!-- ISO19110 relation
       "This usually consisits of a table providing explanation of columns meaning, values interpretation and acronyms/codes used in the data."
