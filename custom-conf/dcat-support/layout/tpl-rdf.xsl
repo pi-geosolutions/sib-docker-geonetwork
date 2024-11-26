@@ -453,8 +453,8 @@
       <entry key="annually">ANNUAL</entry>
       <entry key="irregular">IRREG</entry>
       <entry key="unknown">UNKNOWN</entry>
-      <entry key="notPlanned">http://publications.europa.eu/resource/authority/frequency/NOT_PLANNED</entry>
-      <entry key="asNeeded">http://publications.europa.eu/resource/authority/frequency/AS_NEEDED</entry>
+      <entry key="notPlanned">PUNCTUAL</entry>
+      <entry key="asNeeded">PUNCTUAL</entry>
       <!--
       <entry key="asNeeded"></entry>
       <entry key="notPlanned"></entry>
